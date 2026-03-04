@@ -1,6 +1,6 @@
 class SoundSystem {
     public void start() {
-        System.out.println("Sound system starting...");
+        System.out.println("Sound system is starting...");
     }
 
     public void playSound() {

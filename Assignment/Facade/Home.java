@@ -4,7 +4,7 @@ class SoundSystem {
     }
 
     public void playSound() {
-        System.out.println("Sound system playing audio...");
+        System.out.println("Sound system playing is audio...");
     }
 
     public void stop() {

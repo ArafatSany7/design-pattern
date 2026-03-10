@@ -5,7 +5,7 @@ interface Beverage {
 class BasicCoffee implements Beverage {
     @Override
     public String getDescription() {
-        return "Black Cooffeee";
+        return "Black Cooffeeee";
     }
 }
 

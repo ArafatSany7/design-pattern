@@ -16,7 +16,7 @@ public class Album {
     }
 
     public void display() {
-        System.out.println("Title: " + title + ", Genre: " + genre + ", Release Year: " + releaseYear);
+        System.out.println("Title: " + title + ", Genre: " + genre + ", Releeease Year: " + releaseYear);
     }
 
     public static void main(String[] args) {

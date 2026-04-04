@@ -1,3 +1,4 @@
+
 interface Hdmi {
     void connectWithHdmiCable();
 }
@@ -9,7 +10,7 @@ class Dvi {
 }
 
 class Adapter implements Hdmi {
-    private Dvi dvi;
+    private final Dvi dvi;
 
     public Adapter(Dvi dvi) {
         this.dvi = dvi;

@@ -52,7 +52,7 @@ class ItalicText extends TextDecorator {
 
 public class Text {
     public static void main(String[] args) {
-        FormattedText text = new ItalicText(new BoldText(new SimpleText("Hello, World!")));
+        FormattedText text = new ItalicText(new BoldText(new SimpleText("Hello, Worlddd!")));
 
         System.out.println(text.format());
     }

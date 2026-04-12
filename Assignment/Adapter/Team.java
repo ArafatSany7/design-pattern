@@ -70,7 +70,6 @@ public class Team {
     public static void main(String[] args) {
           Analyst analyst1 = new Analyst(201, "Alice Smith", "Data Analyst");
         Analyst analyst2 = new Analyst(202, "Bob Jones", "Business Analyst");
-        
         TeamLead lead1 = new TeamLead(101, "Charlie Brown", "Lead Developer");
 
         ProjectTeam projectTeam = new ProjectTeam("Data Migration Team");

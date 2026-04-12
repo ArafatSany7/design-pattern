@@ -5,7 +5,7 @@ interface Hdmi {
 
 class Dvi {
     public void connectWithDviCable() {
-        System.out.println("Connected with DVI cable.");
+        System.out.println("Connected with DVI ccable.");
     }
 }
 

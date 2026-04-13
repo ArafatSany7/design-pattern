@@ -1,8 +1,11 @@
- interface OperatingSystem {
+
+interface OperatingSystem {
+
     void run(String device);
 }
 
 abstract class Device {
+
     protected OperatingSystem os;
 
     public Device(OperatingSystem os) {
@@ -11,17 +14,17 @@ abstract class Device {
 
     public abstract void start();
 }
- class MacOS implements OperatingSystem {
+
+class MacOS implements OperatingSystem {
+
     @Override
     public void run(String device) {
         System.out.println("Running " + device + " on MacOS.");
     }
 }
 
-
-
-
 class Printer extends Device {
+
     public Printer(OperatingSystem os) {
         super(os);
     }
@@ -34,6 +37,7 @@ class Printer extends Device {
 }
 
 class Scanner extends Device {
+
     public Scanner(OperatingSystem os) {
         super(os);
     }
@@ -44,7 +48,9 @@ class Scanner extends Device {
         os.run("Scanner");
     }
 }
- class WindowsOS implements OperatingSystem {
+
+class WindowsOS implements OperatingSystem {
+
     @Override
     public void run(String device) {
         System.out.println("Running " + device + " on Windows OS.");
@@ -52,6 +58,7 @@ class Scanner extends Device {
 }
 
 public class Devices {
+
     public static void main(String[] args) {
         Device printerOnMac = new Printer(new MacOS());
         Device scannerOnWindows = new Scanner(new WindowsOS());

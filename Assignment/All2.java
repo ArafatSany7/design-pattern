@@ -1,19 +1,20 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
-
 // 1. ADAPTER PATTERN
-
-
 interface SQLDatabase {
+
     void connectToSQL();
 }
 
 interface NoSQLDatabase {
+
     void connectToNoSQL();
 }
 
 class MongoDB implements NoSQLDatabase {
+
     @Override
     public void connectToNoSQL() {
         System.out.println("Connected to MongoDB (NoSQL Database)");
@@ -21,6 +22,7 @@ class MongoDB implements NoSQLDatabase {
 }
 
 class SQLDatabaseAdapter implements SQLDatabase {
+
     private NoSQLDatabase noSQLDatabase;
 
     public SQLDatabaseAdapter(NoSQLDatabase noSQLDatabase) {
@@ -34,15 +36,14 @@ class SQLDatabaseAdapter implements SQLDatabase {
     }
 }
 
-
 // 2. COMPOSITE PATTERN
-
-
 interface FileSystem {
+
     void showDetails();
 }
 
 class File implements FileSystem {
+
     private String name;
 
     public File(String name) {
@@ -56,6 +57,7 @@ class File implements FileSystem {
 }
 
 class Directory implements FileSystem {
+
     private List<FileSystem> contents = new ArrayList<>();
 
     public void add(FileSystem fileSystem) {
@@ -71,7 +73,7 @@ class Directory implements FileSystem {
         for (FileSystem fs : contents) {
             count++;
             if (fs instanceof Directory) {
-                count += ((Directory) fs).getTotalItems(); 
+                count += ((Directory) fs).getTotalItems();
             }
         }
         return count;
@@ -85,15 +87,14 @@ class Directory implements FileSystem {
     }
 }
 
-
 // 3. DECORATOR PATTERN
-
-
 interface WebPage {
+
     String render();
 }
 
 class BasicWebPage implements WebPage {
+
     @Override
     public String render() {
         return "Basic Web Page";
@@ -101,6 +102,7 @@ class BasicWebPage implements WebPage {
 }
 
 abstract class WebPageDecorator implements WebPage {
+
     protected WebPage page;
 
     public WebPageDecorator(WebPage page) {
@@ -114,6 +116,7 @@ abstract class WebPageDecorator implements WebPage {
 }
 
 class AuthenticatedWebPage extends WebPageDecorator {
+
     public AuthenticatedWebPage(WebPage page) {
         super(page);
     }
@@ -125,6 +128,7 @@ class AuthenticatedWebPage extends WebPageDecorator {
 }
 
 class AuthorizedWebPage extends WebPageDecorator {
+
     private String role;
 
     public AuthorizedWebPage(WebPage page, String role) {
@@ -142,15 +146,14 @@ class AuthorizedWebPage extends WebPageDecorator {
     }
 }
 
-
-
 public class All2 {
+
     public static void main(String[] args) {
-         // --- Adapter Pattern Usage ---
+        // --- Adapter Pattern Usage ---
         System.out.println("--- Adapter Pattern ---");
         NoSQLDatabase mongoDB = new MongoDB();
         SQLDatabase adapter = new SQLDatabaseAdapter(mongoDB);
-        adapter.connectToSQL(); 
+        adapter.connectToSQL();
 
         // --- Composite Pattern Usage ---
         System.out.println("\n--- Composite Pattern ---");
@@ -159,14 +162,14 @@ public class All2 {
         Directory directory = new Directory();
         directory.add(file1);
         directory.add(file2);
-        System.out.println("Total items in directory: " + directory.getTotalItems()); 
-        directory.showDetails(); 
+        System.out.println("Total items in directory: " + directory.getTotalItems());
+        directory.showDetails();
 
         // --- Decorator Pattern Usage ---
         System.out.println("\n--- Decorator Pattern ---");
         WebPage myPage = new BasicWebPage();
         myPage = new AuthenticatedWebPage(myPage);
         myPage = new AuthorizedWebPage(myPage, "admin");
-        System.out.println(myPage.render()); 
+        System.out.println(myPage.render());
     }
 }

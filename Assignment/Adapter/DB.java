@@ -1,15 +1,19 @@
 // Target Interface
- interface SQLDatabase {
+
+interface SQLDatabase {
+
     void connectToSQL();
 }
 
 // Adaptee Interface
- interface NoSQLDatabase {
+interface NoSQLDatabase {
+
     void connectToNoSQL();
 }
 
 // Adaptee Implementation
 class MongoDB implements NoSQLDatabase {
+
     @Override
     public void connectToNoSQL() {
         System.out.println("Connected to MongoDB (NoSQL) database.");
@@ -17,7 +21,8 @@ class MongoDB implements NoSQLDatabase {
 }
 
 // Adapter Class
- class SQLDatabaseAdapter implements SQLDatabase {
+class SQLDatabaseAdapter implements SQLDatabase {
+
     private NoSQLDatabase noSQLDatabase;
 
     // Constructor to initialize the NoSQLDatabase instance
@@ -32,15 +37,15 @@ class MongoDB implements NoSQLDatabase {
     }
 }
 
-
 public class DB {
+
     public static void main(String[] args) {
-           // Create an instance of MongoDB
+        // Create an instance of MongoDB
         NoSQLDatabase mongoDB = new MongoDB();
-        
+
         // Use the adapter to wrap the NoSQL instance into an SQL compatible interface
         SQLDatabase adapter = new SQLDatabaseAdapter(mongoDB);
-        
+
         // Connect treating it as an SQL database
         adapter.connectToSQL();
     }

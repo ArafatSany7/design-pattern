@@ -1,4 +1,3 @@
-// Component Interface
 
 interface WebPage {
 
@@ -12,7 +11,7 @@ class BasicWebPage implements WebPage {
     // Implement the render method to return a string that represents a basic web page
     @Override
     public String render() {
-        return "Basic Web Page";
+        return "Bassic  Web Page";
     }
 }
 

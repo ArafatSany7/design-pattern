@@ -1,57 +1,68 @@
 
+interface IBankingService {
+
+    void getAccountDetails(String accountId);
+
+    void getBalanceDetails(int balance);
+
+    void transferFund(String accountId, int balance);
+}
+
 class AccountService {
 
-    public void getAccountDetails(String accountID) {
-        System.out.println("Fetching Account details for ID : " + accountID);
+    public void getAccountDetails(String accountId) {
+        System.out.println("Fetching account details for ID: " + accountId);
     }
 }
 
-class BallanceService {
+class BalanceService {
 
     public void getBalanceDetails(int balance) {
-        System.out.println("Fetching Account details for ID : " + balance);
+        System.out.println("Fetching balance details: " + balance);
     }
 }
 
-class FundTransfer {
+class FundTransferService {
 
     public void transferFund(String accountId, int balance) {
-        System.out.println("Fund transfer from Account : " + accountId + " And the balance is : " + balance);
+        System.out.println("Fund transfer from Account: " + accountId + ", amount: " + balance);
     }
 }
 
-class BankingFacade {
+class BankingFacade implements IBankingService {
 
     private final AccountService accountService;
-    private final BallanceService ballanceService;
-    private final FundTransfer fundTransfer;
+    private final BalanceService balanceService;
+    private final FundTransferService fundTransferService;
 
-    public BankingFacade(){
+    public BankingFacade() {
         this.accountService = new AccountService();
-        this.ballanceService = new BallanceService();
-        this.fundTransfer = new FundTransfer();
+        this.balanceService = new BalanceService();
+        this.fundTransferService = new FundTransferService();
     }
 
-    public void getAccountDetails(String accountID){
-        accountService.getAccountDetails(accountID);
+    @Override
+    public void getAccountDetails(String accountId) {
+        accountService.getAccountDetails(accountId);
     }
 
-    public void getBalanceDetails(int balance){
-        ballanceService.getBalanceDetails(balance);
-    }
-    public void transferFund(String accountID , int balance){
-        fundTransfer.transferFund(accountID, balance);
+    @Override
+    public void getBalanceDetails(int balance) {
+        balanceService.getBalanceDetails(balance);
     }
 
+    @Override
+    public void transferFund(String accountId, int balance) {
+        fundTransferService.transferFund(accountId, balance);
+    }
 }
 
 public class Bank {
 
     public static void main(String[] args) {
-
-        BankingFacade bankingFacade = new BankingFacade();
-        bankingFacade.getAccountDetails("24135" );
-        bankingFacade.getBalanceDetails(9999);
-        bankingFacade.transferFund("3277", 8776);
+        IBankingService bankingService = new BankingFacade();
+        bankingService.getAccountDetails("24135");
+        bankingService.getBalanceDetails(9999);
+        bankingService.transferFund("3277", 8776);
     }
 }

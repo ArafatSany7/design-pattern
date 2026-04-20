@@ -3,26 +3,29 @@ interface orderTask{
 }
 
 class CheckInventory implements orderTask{
+    @Override
     public void execute(String productId , double amount){
         System.out.println("Product " + productId + "Is available and price is " + amount);
     }
 }
 
 class CalculateAmount implements orderTask{
+    @Override
     public void execute(String productId , double amount){
         System.out.println("Total Amount is "+amount+" Taka");
     }
 }
 class PaymentConfirmation implements orderTask{
+    @Override
     public void execute(String productId ,  double amount ){
         System.out.println("Payment tk " + amount + " Has confirmed for product id "+ productId);
     }
 }
 
 class orderFacade {
-    private orderTask inventory;
-    private orderTask calculate;
-    private orderTask payment;
+    private final orderTask inventory;
+    private final orderTask calculate;
+    private final orderTask payment;
 
     public orderFacade(){
         this.calculate =  new CalculateAmount();

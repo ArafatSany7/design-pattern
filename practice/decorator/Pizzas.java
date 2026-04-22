@@ -32,6 +32,7 @@ abstract class pizzaDecorator implements Pizza {
         return decoratedPizza.getDescription();
     }
 
+    @Override
     public double cost() {
         return decoratedPizza.cost();
     }
@@ -58,6 +59,6 @@ public class Pizzas {
     public static void main(String[] args) {
         Pizza pizza = new plainPizza();
         pizza = new cheeseDecorator(pizza);
-        System.out.println(pizza.getDescription()+" $" + pizza.cost());
+        System.out.println(pizza.getDescription()+"  $" + pizza.cost());
     }
 }

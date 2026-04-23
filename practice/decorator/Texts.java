@@ -35,7 +35,7 @@ class BoldText extends textDecorator {
 
     @Override
     public String format() {
-        return "<b >" + text.format() + "</b>";
+        return "< b >" + text.format() + "</>";
     }
 }
 

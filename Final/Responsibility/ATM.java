@@ -84,7 +84,7 @@ public class ATM {
         card.sendNext(pin);
         pin.sendNext(balance);
 
-        ATMRequest request = new ATMRequest("ertert", "345343", 98);
+        ATMRequest request = new ATMRequest("ertert", "345f5343", 98);
         card.handle(request);
     }
 }
